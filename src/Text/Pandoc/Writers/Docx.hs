@@ -699,8 +699,9 @@ blockToOpenXML opts (Table caption aligns widths headers rows) = do
   rows' <- mapM (mapM cellToOpenXML . zip aligns) rows
   let borderProps = mknode "w:tcPr" []
                     [ mknode "w:tcBorders" []
-                      $ mknode "w:bottom" [("w:val","single")] ()
-                    , mknode "w:vAlign" [("w:val","bottom")] () ]
+                      $ mknode "w:bottom" [("w:val","dotted"),("color","C0504D")] (),
+                      mknode "w:top" [("w:val","dotted"),("color","C0504D")] (),
+                      mknode "w:vAlign" [("w:val","bottom")] () ]
   let emptyCell = [mknode "w:p" [] [mknode "w:pPr" []
                     [mknode "w:pStyle" [("w:val","Compact")] ()]]]
   let mkcell border contents = mknode "w:tc" []
